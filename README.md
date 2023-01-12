@@ -20,7 +20,7 @@ For Running sample with the help of Gst Python:
   ```
 ## **Method 2.**
 we will require the following packages for setting up DeepStream on PC (OS Ubuntu 20.04).
- - You must install the following components mention in **4 link**:
+ - You must install the following components mention in **4**:
     - Ubuntu 20.04
     - GStreamer 1.16.2
     - NVIDIA driver 515.65.01
