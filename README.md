@@ -28,7 +28,7 @@ we will require the following packages for setting up DeepStream on PC (OS Ubunt
     - TensorRT 8.4.1.5
     
 1. Install Nvidia Driver 
- -you can install from my Deep Learining repo
+ -you can install from my Development repo.
 2. [install Cuda version 11.8 or 11.7, i have cuda 11.8 it work](https://developer.nvidia.com/cuda-toolkit-archive)
 3. [Download deb or tar file of **Deep Stream SDK**](https://developer.nvidia.com/deepstream-getting-started)
 4. [Note follow this section for installation  -- **dGPU Setup for Ubuntu** ](https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html)
