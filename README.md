@@ -9,12 +9,15 @@ All the enviroment setup commands taken [from](https://docs.nvidia.com/metropoli
 - The Last scripting file **05_bindings.sh** is for installation of GStream taken from [here](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps/tree/master/bindings) 
 
 For Running sample with the help of Gst Python:
-  > cd
-  
-  > cd /opt/nvidia/deepstream/deepstream-6.1/sources/deepstream_python_apps/apps/deepstream-test1
-  
-  > sudo python3 deepstream_test_1.py  /opt/nvidia/deepstream/deepstream-6.1/samples/streams/sample_720p.h264
-
+  ```
+  cd
+  ```
+  ```
+  cd /opt/nvidia/deepstream/deepstream-6.1/sources/deepstream_python_apps/apps/deepstream-test1
+  ```
+  ```
+  sudo python3 deepstream_test_1.py  /opt/nvidia/deepstream/deepstream-6.1/samples/streams/sample_720p.h264
+  ```
 ## **Method 2.**
 we will require the following packages for setting up DeepStream on PC (OS Ubuntu 20.04).
  - You must install the following components mention in **4 link**:
@@ -32,12 +35,15 @@ we will require the following packages for setting up DeepStream on PC (OS Ubunt
 5. [Installing GStream and build](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps/tree/master/bindings)
 
 For running sample with deepstream-app:
- > cd
- 
- > cd /opt/nvidia/deepstream/deepstream-6.1/samples/configs/deepstream-app
- 
- > sudo deepstream-app -c source4_1080p_dec_infer-resnet_tracker_sgie_tiled_display_int8.txt
-
+ ```
+ cd
+ ```
+ ```
+ cd /opt/nvidia/deepstream/deepstream-6.1/samples/configs/deepstream-app
+ ```
+ ```
+ sudo deepstream-app -c source4_1080p_dec_infer-resnet_tracker_sgie_tiled_display_int8.txt
+ ```
  
 
 
