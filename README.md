@@ -46,4 +46,4 @@ For running sample with deepstream-app:
  ```
  
 
-
+[The above scripts are taken from this repo thanks to his effort](https://github.com/rajeshroy402/DeepStream-dGPU-Installation/tree/20.04-6.1)
