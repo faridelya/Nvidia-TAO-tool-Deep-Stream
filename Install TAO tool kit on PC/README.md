@@ -202,4 +202,4 @@ jupter notebook
  
  select any model  like **yolov4.ipynb**
 
-and Now its all Your --- wow 
+and Now its all Yours --- wow 
