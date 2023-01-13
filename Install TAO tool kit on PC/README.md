@@ -1,4 +1,8 @@
 # Install Tao Tool kit on PC
+You can check this vedio for your help but before watching vedio just give one read then you can watch [this](https://youtu.be/jGYxYInlEAk?t=237).
+ All Step that we will take will consist of 
+ ![alt-text](https://github.com/faridelya/Nvidia-TAO-tool-Deep-Stream/blob/master/Install%20TAO%20tool%20kit%20on%20PC/Screenshot%20from%202023-01-13%2016-08-13.png)
+
 TAO toolkit is available as a docker container or a collection of python wheels. There are 4 ways to run TAO Toolkit depending on your preference and setup, through
 
  - the launcher CLI
@@ -14,11 +18,11 @@ The TAO Toolkit launcher is strictly a python3 only package, capable of running 
 
 All the below steps taken from [official doc](https://docs.nvidia.com/tao/tao-toolkit/text/tao_toolkit_quick_start_guide.html) check --> Running TAO Toolkit and we are using the launcher cli method for installtion of tao tool kit.
 
-## Step1. 
+## Step1. Docker-Installation
 The given link show Ubuntu installation you can install on other distro just follow the link.
 Install [docker ce](https://docs.docker.com/engine/install/ubuntu/)
 
-## Step 2.
+## Step 2. Post-installion after Docker 
 i will show all steps but if you want to see official doc then click post installation link.
 [Post Installation of Docker-ce --> Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/)
 1. Create the docker group.
@@ -39,7 +43,7 @@ docker run hello-world
 ```
 if you got error follow official link of post installation.
 
-## Step 3
+## Step 3 Install nvidia-container-toolkit
 Install nvidia-container-toolkit by following the [install-guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)follow Installing on Ubuntu and Debian section.
 The list of prerequisites for running NVIDIA Container Toolkit is described below:
 
@@ -109,7 +113,7 @@ Fri Jan 13 07:31:46 2023
 +-----------------------------------------------------------------------------+
 ```
 
-## Step 4
+## Step 4  NGC Account
 just make account on NGC and follow other steps.
 Get an [NGC](https://catalog.ngc.nvidia.com/) account and API key:
 
@@ -119,7 +123,7 @@ Get an [NGC](https://catalog.ngc.nvidia.com/) account and API key:
 
 Click Sign In.
 
-## Step 4
+## Step 4 Download NGC docker registry
 1. login to NGC accountand click on **Profile**-->**Setup**-->**Generate API KEY**
 2. log in to the NGC docker registry (nvcr.io) using the command docker login nvcr.io and enter the following credentials:
 copy and Run this command on terminal.
@@ -132,7 +136,7 @@ output:
  
 where YOUR_NGC_API_KEY corresponds to the key you generated from step 4 where we created account and we will generate key there.
 
-## Step 5
+## Step 5 Create Enviroment
 NVIDIA recommends setting up a python environment using [miniconda](https://docs.conda.io/en/latest/miniconda.html) but i have already anaconda i will skip this part. but if you dont have just follow.
 
 1. once install miniconda.
@@ -180,9 +184,22 @@ bash setup/quickstart_launcher.sh --upgrade
 tao --help
 ```
 
- > When installing the TAO Toolkit Launcher to your host machine’s native python3 as opposed to the recommended route of using virtual environment, you may get an error saying that tao binary wasn’t found. This is because the path to your tao binary installed by pip wasn’t added to the PATH environment variable in your local machine. In this case, please run the following command:
+ > (**Optional if needed** )When installing the TAO Toolkit Launcher to your host machine’s native python3 as opposed to the recommended route of using virtual environment, you may get an error saying that tao binary wasn’t found. This is because the path to your tao binary installed by pip wasn’t added to the PATH environment variable in your local machine. In this case, please run the following command:
 ```
 export PATH=$PATH:~/.local/bin
 ```
 
+# Now we will Launch Local Notebook
+you will be on path which end on  /getting_started_v4.0.0. next run this
+```
+cd tao_launcher_starter_kit
+```
+```
+jupter notebook
+```
+ - output on browser
+ ![alt-text](https://github.com/faridelya/Nvidia-TAO-tool-Deep-Stream/blob/master/Install%20TAO%20tool%20kit%20on%20PC/Screenshot%20from%202023-01-13%2016-19-58.png)
+ 
+ select any model  like **yolov4.ipynb**
 
+and Now its all Your --- wow 
