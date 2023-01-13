@@ -1,12 +1,16 @@
 # Install Tao Tool kit on PC
 
-All below steps taken from [official doc](https://docs.nvidia.com/tao/tao-toolkit/text/tao_toolkit_quick_start_guide.html) check --> Running TAO Toolkit and follow the launcher cli.
+# 1 Installing the Pre-requisites
+The TAO Toolkit launcher is strictly a python3 only package, capable of running on python versions >= 3.6.9.
+
+All the below steps taken from [official doc](https://docs.nvidia.com/tao/tao-toolkit/text/tao_toolkit_quick_start_guide.html) check --> Running TAO Toolkit and we are using the launcher cli method for installtion of tao tool kit.
 
 ## Step1. 
-
+The given link show Ubuntu installation you can install on other distro just follow the link.
 Install [docker ce](https://docs.docker.com/engine/install/ubuntu/)
 
 ## Step 2.
+i will show all steps but if you want to see official doc then click post installation link.
 [Post Installation of Docker-ce --> Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/)
 1. Create the docker group.
 ```
@@ -95,3 +99,80 @@ Fri Jan 13 07:31:46 2023
 |=============================================================================|
 +-----------------------------------------------------------------------------+
 ```
+
+## Step 4
+just make account on NGC and follow other steps.
+Get an [NGC](https://catalog.ngc.nvidia.com/) account and API key:
+
+1. Go to NGC and click the **TAO Toolkit** container in the **Catalog** tab. This message is displayed: “Sign in to access the PULL feature of this repository”.
+2. Enter your Email address and click Next, or click Create an Account.
+3. Choose your organization when prompted for Organization/Team.
+
+Click Sign In.
+
+## Step 4
+1. login to NGC accountand click on **Profile**-->**Setup**-->**Generate API KEY**
+2. log in to the NGC docker registry (nvcr.io) using the command docker login nvcr.io and enter the following credentials:
+copy and Run this command on terminal.
+```
+docker login nvcr.io
+```
+output:
+ > a. Username: "$oauthtoken"
+ > b. Password: "YOUR_NGC_API_KEY"
+ 
+where YOUR_NGC_API_KEY corresponds to the key you generated from step 4 where we created account and we will generate key there.
+
+## Step 5
+NVIDIA recommends setting up a python environment using [miniconda](https://docs.conda.io/en/latest/miniconda.html) but i have already anaconda i will skip this part. but if you dont have just follow.
+
+1. once install miniconda.
+```
+conda create -n launcher python=3.6
+```
+2. Activate the conda environment that you have just created.
+```
+conda activate launcher
+```
+3. Once you have activated your conda environment,
+```
+(launcher) py-3.6.9 desktop:
+```
+4. When you are done with you session, you may deactivate your conda environment
+```
+conda deactivate
+```
+5. You may re-instantiate this created conda environment.
+```
+conda activate launcher
+```
+# 2 Installing TAO Launcher
+
+Once you have installed the required pre-requisites.
+
+1. Install the CLI launcher via the quick start script downloaded with the getting_started NGC package from [here] or you can watch given below.
+ - quick start script
+-  1st
+```
+wget --content-disposition https://api.ngc.nvidia.com/v2/resources/nvidia/tao/tao-getting-started/versions/4.0.0/zip -O getting_started_v4.0.0.zip
+unzip -u getting_started_v4.0.0.zip  -d ./getting_started_v4.0.0 && rm -rf getting_started_v4.0.0.zip && cd ./getting_started_v4.0.0
+```
+- 2nd 
+```
+bash setup/quickstart_launcher.sh --install
+```
+2. You can also use this script to update the launcher to the latest version of TAO Toolkit by running the following command
+```
+bash setup/quickstart_launcher.sh --upgrade
+```
+3. Invoke the entrypoints using the tao command.
+```
+tao --help
+```
+
+ > When installing the TAO Toolkit Launcher to your host machine’s native python3 as opposed to the recommended route of using virtual environment, you may get an error saying that tao binary wasn’t found. This is because the path to your tao binary installed by pip wasn’t added to the PATH environment variable in your local machine. In this case, please run the following command:
+```
+export PATH=$PATH:~/.local/bin
+```
+
+
