@@ -1,5 +1,14 @@
 # Install Tao Tool kit on PC
+TAO toolkit is available as a docker container or a collection of python wheels. There are 4 ways to run TAO Toolkit depending on your preference and setup, through
 
+ - the launcher CLI
+
+ - the containers directly
+
+ - the tao toolkit apis
+
+ - python wheels
+we will use the first method ( launcher CLI ) for installation
 # 1 Installing the Pre-requisites
 The TAO Toolkit launcher is strictly a python3 only package, capable of running on python versions >= 3.6.9.
 
