@@ -160,7 +160,8 @@ conda activate launcher
 Once you have installed the required pre-requisites.
 
 1. Install the CLI launcher via the quick start script downloaded with the getting_started NGC package from [here] or you can watch given below.
- - quick start script
+- quick start script
+- NOTE: yu must activate conda enviroment berfore running all the following steps.
 -  1st
 ```
 wget --content-disposition https://api.ngc.nvidia.com/v2/resources/nvidia/tao/tao-getting-started/versions/4.0.0/zip -O getting_started_v4.0.0.zip
