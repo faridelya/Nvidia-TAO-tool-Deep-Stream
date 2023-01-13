@@ -48,7 +48,7 @@ For running sample with deepstream-app:
 
 [The above scripts are taken from this repo thanks to his effort](https://github.com/rajeshroy402/DeepStream-dGPU-Installation/tree/20.04-6.1)
 
-# Fine Tune TAO pre-trained Model fro specific task.
+# Fine Tune TAO pre-trained Model for specific downstream task.
 
 1. [Want to learn more about TAO](https://docs.nvidia.com/tao/tao-toolkit/text/overview.html) 
 1. [TAO tool kit all pre-trained models that can run on colab without effort](https://docs.nvidia.com/tao/tao-toolkit/text/running_in_cloud/running_tao_toolkit_on_google_colab.html#running-tao-toolkit-on-google-colab)
