@@ -115,7 +115,16 @@ gie-unique-id=1
 config-file=config_infer_primary_yolov4.txt
 #config-file=config_infer_primary_detectnet_v2.txt
 ```
-- The above deep stream command run one yml file that ci=onatin one reference file for model configuration for Deep stream, like the above yml file has the **primary-gie** group that has refrence to **config-file** as you can see. 
+- The above deep stream command run one yml file that ci=onatin one reference file for model configuration for Deep stream, like the above yml file has the **primary-gie** group that has refrence to **config-file** as you can see. Thsis config file has some parameter for loading modle into Deep stream which are.
+- The DeepStream configuration file includes some runtime parameters for DeepStream nvinfer plugin, such as 
+- model path, 
+- label file path, 
+- TensorRT inference precision, 
+- input and output node names, 
+- input dimensions and so on.
+
+The above file show diferent config file for different models, each model has its own DeepStream configuration file.
+
 4. Related Links
  - the following are some repository.that show how tao model integrate with deep stream app.
  1. [deepstream-tao-app :](https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps) this repo show **Integrate TAO model with DeepStream SDK**
