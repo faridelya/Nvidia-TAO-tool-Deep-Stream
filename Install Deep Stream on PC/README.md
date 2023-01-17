@@ -1,4 +1,4 @@
-# Nvidia Deep-Stream SDK
+# Intsallation of Nvidia Deep-Stream SDK
 
 ## **Method 1.**
 you can use above Scripting file for auto installation of dependences and all things for Deep Stream SDK.
@@ -54,3 +54,70 @@ For running sample with deepstream-app:
 1. [TAO tool kit all pre-trained models that can run on colab without effort](https://docs.nvidia.com/tao/tao-toolkit/text/running_in_cloud/running_tao_toolkit_on_google_colab.html#running-tao-toolkit-on-google-colab)
 2. [Deploying to DeepStream for YOLOv4](https://docs.nvidia.com/tao/tao-toolkit/text/ds_tao/yolo_v4_ds.html#)
 3. [Integrate TAO model to Deep Stream github](https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps)
+
+
+# Run the TAO pre-trained purpose-built models in DeepStream
+click [here](https://github.com/NVIDIA-AI-IOT/deepstream_reference_apps/tree/master/deepstream_app_tao_configs) if you want to follow official doc. Given below all steps have taken from official doc you can follow along.
+
+1. Download the config files
+```
+git clone https://github.com/NVIDIA-AI-IOT/deepstream_reference_apps.git
+cd deepstream_reference_apps/deepstream_app_tao_configs/
+sudo cp -a * /opt/nvidia/deepstream/deepstream/samples/configs/tao_pretrained_models/
+```
+2. Download the models
+```
+sudo apt install -y wget zip
+cd /opt/nvidia/deepstream/deepstream/samples/configs/tao_pretrained_models/
+sudo ./download_models.sh
+```
+
+3. Run the models in DeepStream
+```
+sudo deepstream-app -c deepstream_app_source1_$MODEL.txt
+```
+e.g.
+```
+sudo deepstream-app -c deepstream_app_source1_dashcamnet_vehiclemakenet_vehicletypenet.txt
+```
+The yaml config files can also be used
+
+```
+sudo deepstream-app -c deepstream_app_source1_$MODEL.yml
+```
+e.g.
+```
+sudo deepstream-app -c deepstream_app_source1_dashcamnet_vehiclemakenet_vehicletypenet.yml
+```
+**Note:**
+ - For which model of the deepstream_app_source1_$MODEL.txt uses, please find from the [primary-gie] section in it, for example
+
+Below is the [primary-gie] config of deepstream_app_source1_detection_models.txt, which indicates it uses yolov4 by default, and user can change to frcnn/ssd/dssd/retinanet/yolov3/detectnet_v2 by commenting "config-file=config_infer_primary_yolov4.txt" and uncommenting the corresponding "config-file=" .
+```
+[primary-gie]
+enable=1
+gpu-id=0
+# Modify as necessary
+batch-size=1
+#Required by the app for OSD, not a plugin property
+bbox-border-color0=1;0;0;1
+bbox-border-color1=0;1;1;1
+bbox-border-color2=0;0;1;1
+bbox-border-color3=0;1;0;1
+gie-unique-id=1
+# Replace the infer primary config file when you need to
+# use other detection models
+#config-file=config_infer_primary_frcnn.txt
+#config-file=config_infer_primary_ssd.txt
+#config-file=config_infer_primary_dssd.txt
+#config-file=config_infer_primary_retinanet.txt
+#config-file=config_infer_primary_yolov3.txt
+config-file=config_infer_primary_yolov4.txt
+#config-file=config_infer_primary_detectnet_v2.txt
+```
+
+4. Related Links
+
+[deepstream-tao-app :](https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps)
+[TAO Toolkit Guide : ](https://docs.nvidia.com/tao/tao-toolkit/index.html)
+
