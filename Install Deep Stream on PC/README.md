@@ -115,9 +115,10 @@ gie-unique-id=1
 config-file=config_infer_primary_yolov4.txt
 #config-file=config_infer_primary_detectnet_v2.txt
 ```
-
+- The above deep stream command run one yml file that ci=onatin one reference file for model configuration for Deep stream, like the above yml file has the **primary-gie** group that has refrence to **config-file** as you can see. 
 4. Related Links
-
-[deepstream-tao-app :](https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps)
+ - the following are some repository.that show how tao model integrate with deep stream app.
+ 1. [deepstream-tao-app :](https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps) this repo show **Integrate TAO model with DeepStream SDK**
+ 2. the above shown command are from **deepstream_reference_apps** this repo also show how to run tao model but the above link show how to make app for tao model with deep stream.
 [TAO Toolkit Guide : ](https://docs.nvidia.com/tao/tao-toolkit/index.html)
 
