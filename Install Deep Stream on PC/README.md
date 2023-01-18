@@ -134,7 +134,7 @@ The above file show diferent config file for different models, each model has it
 # Integrate Tao model ( trained on specific data ) in Deep Stream.
 
 You must have done all above steps before doing this.
-we have two files in deep stream app  on this path **/opt/nvidia/deepstream/deepstream-6.1/samples/configs/tao_pretrained_models**
+we have two category of files in deep stream app on this path **/opt/nvidia/deepstream/deepstream-6.1/samples/configs/tao_pretrained_models**
 1. config_infer_primary_detectnet_v2.txt or yml     ( supporting config file )
 2. deepstream_app_source1_detection_models.txt or yml  ( main config file )
 i just placed the trained model and other files like cache file , enginefile , model.etlt and labels.txt in the following directory path 
@@ -143,6 +143,8 @@ i just placed the trained model and other files like cache file , enginefile , m
 ```
 and go to configuration path and create new file and copy and paste main and supporting config to your new created files and set parameter just like i did in the following files.
 - supporting config file  i named this **nvinfer_config.txt** you can rename.
+ we have two options either set engine file and cache file along with model.etlt and labels.txt     but this engine file willspecific to hardware use second option.
+ The second option is setup parameter for model.etlt and labels.txt and optional cahce file so deep stream will autogenerate engine file 
 ```
 [property]
 gpu-id=0
@@ -313,3 +315,4 @@ when we run deep stream with my trained tao model, we use
 ```
 sudo deepstream-app -c deepstrean_app_source1_custom_yolov4.txt
 ```
+[you can also check offical doc for help](https://docs.nvidia.com/tao/tao-toolkit/text/ds_tao/yolo_v4_ds.html#integrating-yolov4-model)
