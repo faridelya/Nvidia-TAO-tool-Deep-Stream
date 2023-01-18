@@ -127,7 +127,189 @@ The above file show diferent config file for different models, each model has it
 
 4. Related Links
  - the following are some repository.that show how tao model integrate with deep stream app.
- 1. [deepstream-tao-app :](https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps) this repo show **Integrate TAO model with DeepStream SDK**
- 2. the above shown command are from **deepstream_reference_apps** this repo also show how to run tao model but the above link show how to make app for tao model with deep stream.
+ 1. [deepstream-tao-app :](https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps) this repo show **Integrate TAO model with DeepStream SDK** but this doesnot work for me.
+ 2. the above shown command are from **deepstream_reference_apps** this repo also show how to run tao model with deep stream.i found this in tao_pretrained_models folder in readme file so i use this way and it work for sample as well for custom model now i will show hoe to integrated custom tao model integration with Deep stream.
 [TAO Toolkit Guide : ](https://docs.nvidia.com/tao/tao-toolkit/index.html)
 
+# Integrate Tao model ( trained on specific data ) in Deep Stream.
+
+You must have done all above steps before doing this.
+we have two files in deep stream app  on this path **/opt/nvidia/deepstream/deepstream-6.1/samples/configs/tao_pretrained_models**
+1. config_infer_primary_detectnet_v2.txt or yml     ( supporting config file )
+2. deepstream_app_source1_detection_models.txt or yml  ( main config file )
+i just placed the trained model and other files like cache file , enginefile , model.etlt and labels.txt in the following directory path 
+```
+/opt/nvidia/deepstream/deepstream-6.1/samples/models/tao_pretrained_models/yolov4/n/
+```
+and go to configuration path and create new file and copy and paste main and supporting config to your new created files and set parameter just like i did in the following files.
+- supporting config file  i named this **nvinfer_config.txt** you can rename.
+```
+[property]
+gpu-id=0
+net-scale-factor=1.0
+offsets=103.939;116.779;123.68
+model-color-format=1
+labelfile-path= ../../models/tao_pretrained_models/yolov4/n/labels.txt      # set this path to your trained tao model labels
+model-engine-file=../../models/tao_pretrained_models/yolov4/n/trt.engine    # set this path to your trained tao model engine file
+int8-calib-file=../../models/tao_pretrained_models/yolov4/n/cal.bin         # # set this path to your trained tao model calibiration cache
+tlt-encoded-model=../../models/tao_pretrained_models/yolov4/n/yolov4_resnet18_epoch_010.etlt   # set this path to your trained tao-model.eltl
+tlt-model-key = NGpmbHN0ZTNrZHFkOGRxNnFsbW9rbXNxbnU6Yzc5NWM5MjQtZDE1YS00NTYxLTg3YzgtNTU2MWVhNDg1M2M3  # set the key which you are using during training time.
+infer-dims=3;384;1248   # set this infer dimension when generate config for model that will have this infor
+maintain-aspect-ratio=1
+uff-input-order=0
+uff-input-blob-name=Input
+batch-size=1
+## 0=FP32, 1=INT8, 2=FP16 mode
+network-mode=0
+num-detected-classes=3
+interval=0
+gie-unique-id=1
+is-classifier=0
+#network-type=0
+cluster-mode=3
+output-blob-names=BatchedNMS
+parse-bbox-func-name=NvDsInferParseCustomBatchedNMSTLT
+custom-lib-path=/opt/nvidia/deepstream/deepstream/lib/libnvds_infercustomparser.so
+layer-device-precision=cls/mul:fp32:gpu;box/mul_6:fp32:gpu;box/add:fp32:gpu;box/mul_4:fp32:gpu;box/add_1:fp32:gpu;cls/Reshape_reshape:fp32:gpu;box/Reshape_reshape:fp32:gpu;encoded_detections:fp32:gpu;bg_leaky_c>
+
+[class-attrs-all]
+pre-cluster-threshold=0.3
+roi-top-offset=0
+roi-bottom-offset=0
+detected-min-w=0
+detected-min-h=0
+detected-max-w=0
+detected-max-h=0
+
+[class-attrs-1]
+nms-iou-threshold=0.9
+```
+- Main config file   i name this file **deepstrean_app_source1_custom_yolov4.txt** 
+```
+[application]
+enable-perf-measurement=1
+perf-measurement-interval-sec=1
+
+[tiled-display]
+enable=1
+rows=1
+columns=1
+width=1280
+height=720
+gpu-id=0
+
+[source0]
+enable=1
+#Type - 1=CameraV4L2 2=URI 3=MultiURI
+type=3
+num-sources=1
+uri=file://../../streams/sample_1080p_h265.mp4
+gpu-id=0
+
+[streammux]
+gpu-id=0
+batch-size=1
+batched-push-timeout=40000
+## Set muxer output width and height
+width=1920
+height=1080
+
+[sink0]
+enable=1
+#Type - 1=FakeSink 2=EglSink 3=File
+type=2
+sync=1
+source-id=0
+gpu-id=0
+
+[osd]
+enable=1
+gpu-id=0
+border-width=3
+text-size=15
+text-color=1;1;1;1;
+text-bg-color=0.3;0.3;0.3;1
+font=Arial
+
+[primary-gie]
+enable=1
+gpu-id=0
+# Modify as necessary
+batch-size=1
+#Required by the app for OSD, not a plugin property
+bbox-border-color0=1;0;0;1
+bbox-border-color1=0;1;1;1
+bbox-border-color2=0;0;1;1
+bbox-border-color3=0;1;0;1
+gie-unique-id=1
+# Replace the infer primary config file when you need to
+# use other detection models
+#config-file=config_infer_primary_frcnn.txt
+#config-file=config_infer_primary_ssd.txt
+config-file = nvinfer_config.txt                      # just set this to you supporting config file and other all will be default
+#config-file=config_infer_primary_dssd.txt
+#config-file=config_infer_primary_retinanet.txt
+#config-file=config_infer_primary_yolov3.txt
+#config-file=config_infer_primary_yolov4.txt
+#config-file=config_infer_primary_detectnet_v2.txt
+#config-file=config_infer_primary_yolov4-tiny.txt
+#config-file=config_infer_primary_efficientdet.txt
+
+[sink1]
+enable=0
+type=3
+#1=mp4 2=mkv
+container=1
+#1=h264 2=h265 3=mpeg4
+codec=1
+#encoder type 0=Hardware 1=Software
+enc-type=0
+sync=0
+bitrate=2000000
+#H264 Profile - 0=Baseline 2=Main 4=High
+#H265 Profile - 0=Main 1=Main10
+profile=0
+output-file=out.mp4
+source-id=0
+
+[sink2]
+enable=0
+#Type - 1=FakeSink 2=EglSink 3=File 4=RTSPStreaming 5=Overlay
+type=4
+#1=h264 2=h265
+codec=1
+#encoder type 0=Hardware 1=Software
+enc-type=0
+sync=0
+bitrate=4000000
+#H264 Profile - 0=Baseline 2=Main 4=High
+#H265 Profile - 0=Main 1=Main10
+profile=0
+# set below properties in case of RTSPStreaming
+rtsp-port=8554
+udp-port=5400
+
+[tracker]
+enable=1
+# For NvDCF and DeepSORT tracker, tracker-width and tracker-height must be a multiple of 32, respectively
+tracker-width=640
+tracker-height=384
+ll-lib-file=/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so
+# ll-config-file required to set different tracker types
+# ll-config-file=../deepstream-app/config_tracker_IOU.yml
+ll-config-file=../deepstream-app/config_tracker_NvDCF_perf.yml
+# ll-config-file=../deepstream-app/config_tracker_NvDCF_accuracy.yml
+# ll-config-file=../deepstream-app/config_tracker_DeepSORT.yml
+gpu-id=0
+enable-batch-process=1
+enable-past-frame=1
+display-tracking-id=1
+
+[tests]
+file-loop=0
+```
+
+when we run deep stream with my trained tao model, we use 
+```
+sudo deepstream-app -c deepstrean_app_source1_custom_yolov4.txt
+```
