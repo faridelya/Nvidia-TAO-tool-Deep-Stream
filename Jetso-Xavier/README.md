@@ -8,3 +8,4 @@
 - Install jetpack OS on Jetson kit, you done.
 
 # Deep Stream with Python( creating plugins with python for application )
+- Check [this](https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_ref_app_deepstream.html) page and give one read so you can understand how to use python with deep stream
