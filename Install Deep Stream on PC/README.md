@@ -134,7 +134,10 @@ The above file show diferent config file for different models, each model has it
 # Integrate Tao model ( trained on specific data ) in Deep Stream.
 
 You must have done all above steps before doing this.
-we have two category of files in deep stream app on this path **/opt/nvidia/deepstream/deepstream-6.1/samples/configs/tao_pretrained_models**
+we have two category of files in deep stream app on this path
+```
+/opt/nvidia/deepstream/deepstream-6.1/samples/configs/tao_pretrained_models
+```
 1. config_infer_primary_detectnet_v2.txt or yml     ( supporting config file )
 2. deepstream_app_source1_detection_models.txt or yml  ( main config file )
 i just placed the trained model and other files like cache file , enginefile , model.etlt and labels.txt in the following directory path 
