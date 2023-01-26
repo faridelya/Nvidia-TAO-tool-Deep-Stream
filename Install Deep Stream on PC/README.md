@@ -32,7 +32,7 @@ we will require the following packages for setting up DeepStream on PC (OS Ubunt
 2. [install Cuda version 11.8 or 11.7, i have cuda 11.8 it work](https://developer.nvidia.com/cuda-toolkit-archive)
 3. [Download deb or tar file of **Deep Stream SDK**](https://developer.nvidia.com/deepstream-getting-started)
 4. [Note follow this section for installation  -- **dGPU Setup for Ubuntu** ](https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html)
-5. [Installing GStream and build](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps/tree/master/bindings)
+5. [Installing binding for python](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps/tree/master/bindings)
 
 For running sample with deepstream-app:
  ```
