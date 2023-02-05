@@ -10,5 +10,8 @@
 - After compeletion plugout sd-card and plugin into Jetson kit and coonect display and mouse and keyoard with jetson kit, also ethernet and boot the kit.
 - Install jetpack OS on Jetson kit, you done.
 
-# Deep Stream with Python( creating plugins with python for application )
+# Deep Stream with Python( constructingof plugins with python for application )
 - Check [this](https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_ref_app_deepstream.html) page and give one read so you can understand how to use python with deep stream
+
+
+# [Building Video AI Applications at the Edge on Jetson Nano](https://courses.nvidia.com/courses/course-v1:DLI+S-IV-02+V2/)
