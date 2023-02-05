@@ -15,3 +15,4 @@
 
 
 # [Building Video AI Applications at the Edge on Jetson Nano](https://courses.nvidia.com/courses/course-v1:DLI+S-IV-02+V2/)
+# [How to Speed Up Deep Learning Inference Using TensorRT](https://developer.nvidia.com/blog/speed-up-inference-tensorrt/)
