@@ -6,7 +6,7 @@ All the enviroment setup commands taken [from](https://docs.nvidia.com/metropoli
 
 - For runing any above file in terminal (  bash ./00_uninstall_exisiting_setup.sh ).
 - If you have Nvidia driver, Cuda, CuDnn installed on PC so donn't run this **00_uninstall_exisiting_setup.sh** file. and run all other files one by one.
-- The Last scripting file **05_bindings.sh** is for installation of GStream taken from [here](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps/tree/master/bindings) 
+- The Last scripting file **05_bindings.sh** is for installation of python binding for Deepstream python app taken from [here](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps/tree/master/bindings) 
 
 For Running sample with the help of Gst Python:
   ```
