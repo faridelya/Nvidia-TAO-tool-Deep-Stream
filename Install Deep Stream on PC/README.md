@@ -1,5 +1,5 @@
 # Intsallation of Nvidia Deep-Stream SDK
-
+ - [For Different version of Deepstream SDK](https://docs.nvidia.com/metropolis/deepstream-archive.html)
 ## **Method 1.**
 you can use above Scripting file for auto installation of dependences and all things for Deep Stream SDK.
 All the enviroment setup commands taken [from](https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html) under section ( dGPU Setup for Ubuntu ). 
